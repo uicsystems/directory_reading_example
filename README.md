@@ -10,16 +10,16 @@ Example of how to use the program:
 
    Program reads in contents of a directory 
       Terminal Input:
-      '''
+      ```
         ./example test_dir
-      '''
+      ```
 
       Terminal Output:
-      '''
+      ```
         Contents of test_dir are:
         .
         ..
         test1.c
         test2.txt
         sub_dir
-      '''
+      ```
