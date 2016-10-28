@@ -13,7 +13,6 @@ Example of how to use the program:
       ```
         ./example test_dir
       ```
-
       Terminal Output:
       ```
         Contents of test_dir are:
