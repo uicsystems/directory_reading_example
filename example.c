@@ -20,6 +20,9 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <unistd.h>
 
 #define PATH_ARG 1
 #define DIRECTORY_LISTING_MAX_CHAR 1013 // can get overflow if have a large directory and not enough characters
@@ -72,6 +75,17 @@ int main(int argc, char** argv)
   if(argc != 2)
   {
     fprintf(stderr, "Arguments to Program not correct. Exiting.\n");
+    exit(-1);
+  }
+
+  //check if file is a directory
+  struct stat file_stat;
+  stat(argv[PATH_ARG], &file_stat);
+
+  if (S_ISDIR(file_stat.st_mode)) {
+    printf("%s is a directory\n", argv[PATH_ARG]);
+  } else {
+    printf("%s is NOT a directory!  Program exiting\n", argv[PATH_ARG]);
     exit(-1);
   }
 
