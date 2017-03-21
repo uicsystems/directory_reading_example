@@ -78,10 +78,15 @@ int main(int argc, char** argv)
     exit(-1);
   }
 
-  //check if file is a directory
+  //check if file exists
   struct stat file_stat;
-  stat(argv[PATH_ARG], &file_stat);
+  if (stat(argv[PATH_ARG], &file_stat) != 0) {
+    printf("%s does not exist!  Program exiting\n", argv[PATH_ARG]);
+    exit(-1);
+  }
 
+
+  //check if file is a directory
   if (S_ISDIR(file_stat.st_mode)) {
     printf("%s is a directory\n", argv[PATH_ARG]);
   } else {
